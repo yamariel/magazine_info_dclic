@@ -71,7 +71,9 @@ class _InfoRedactorViewState extends State<InfoRedactorView> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (_) => UpdateRedactorView(),
+                                    builder: (_) => UpdateRedactorView(
+                                      redactor: redactor,
+                                    ),
                                   ),
                                 );
                               },
