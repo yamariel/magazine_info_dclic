@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "52097219424",
+    "project_id": "dclic-redactor",
+    "storage_bucket": "dclic-redactor.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:52097219424:android:c73f2b46e3b1b06ffffc05",
+        "android_client_info": {
+          "package_name": "com.example.redactor"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBMtP89wfT7mvCM9Mk-RAKm9vWQlBrEpnc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
