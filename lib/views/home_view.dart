@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:redactor/views/add_redactor_view.dart';
+import 'package:redactor/views/info_redactor_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -6,7 +8,48 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: Drawer(),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            Container(
+              height: 190,
+              width: double.infinity,
+              padding: const EdgeInsets.only(top: 100, left: 20),
+              color: Colors.blue,
+              child: const Text(
+                "Magazine Infos",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person_add),
+              title: const Text("Ajouter un rédacteur"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const AddRedactorView()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.group),
+              title: const Text("Informations sur les rédacteurs"),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const InfoRedactorView()),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.blue,
         centerTitle: true,
@@ -64,15 +107,9 @@ class HomeView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Image.asset(
-                    "assets/dclic.jpg",
-                    width: 170,
-                  ),
+                  Image.asset("assets/dclic.jpg", width: 170),
                   const SizedBox(width: 20),
-                  Image.asset(
-                    "assets/dclic.jpg",
-                    width: 170,
-                  ),
+                  Image.asset("assets/dclic.jpg", width: 170),
                 ],
               ),
             ),
