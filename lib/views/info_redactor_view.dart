@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../controllers/redactor_controller.dart';
 import '../models/redactor_model.dart';
 import '../views/update_redactor_view.dart';
@@ -77,15 +78,35 @@ class _InfoRedactorViewState extends State<InfoRedactorView> {
                               icon: Icon(Icons.edit, color: Colors.yellow),
                             ),
                             IconButton(
-                              onPressed: () {
-                                ScaffoldMessenger(
-                                  child: AlertDialog(
-                                    content: Text(
-                                      "Voulez-vous supprimer $redactor.name ",
+                              onPressed: () async {
+                                final confirmed = await showDialog<bool>(
+                                  context: context,
+                                  builder: (dialogContext) => AlertDialog(
+                                    title: const Text(
+                                      "Confirmer la suppression",
                                     ),
+                                    content: Text(
+                                      "Voulez-vous supprimer ${redactor.name} ?",
+                                    ),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(dialogContext, false),
+                                        child: const Text("Annuler", style: TextStyle(color: Colors.green),),
+                                      ),
+                                      const SizedBox(width: 100,),
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(dialogContext, true),
+                                        child: const Text("Supprimer", style: TextStyle(color: Colors.red),),
+                                      ),
+                                    ],
                                   ),
                                 );
-                                controller.deleteRedactor(redactor.id);
+
+                                if (confirmed == true) {
+                                  await controller.deleteRedactor(redactor.id);
+                                }
                               },
                               icon: Icon(Icons.delete, color: Colors.red),
                             ),
