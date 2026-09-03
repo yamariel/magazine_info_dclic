@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:redactor/views/add_redactor_view.dart';
-import 'package:redactor/views/info_redactor_view.dart';
+import '../controllers/redactor_controller.dart';
+import '../views/add_redactor_view.dart';
+import '../views/info_redactor_view.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -32,7 +33,11 @@ class HomeView extends StatelessWidget {
                 Navigator.pop(context);
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => const AddRedactorView()),
+                  MaterialPageRoute(
+                    builder: (_) => AddRedactorView(
+                      controller: RedactorController(),
+                    ),
+                  ),
                 );
               },
             ),
